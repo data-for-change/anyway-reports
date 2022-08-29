@@ -18,7 +18,7 @@ import EmbeddedReport from "./Console/EmbeddedReport";
 import VisionZero from "./Console/VisionZero";
 import _ from "lodash";
 
-const DEFAULT_REPORT_TYPE = "accidents_around_schools";
+const DEFAULT_REPORT_TYPES = ["accidents_around_schools","schools"];
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -74,7 +74,7 @@ function App() {
   const [schoolsMetaData, setSchoolsMetaData] = useState([]);
   const [selectedId, setSelectedId] = React.useState(null);
 
-  const [embeddedReports, setEmbeddedReports] = React.useState([]);  
+  const [embeddedReports, setEmbeddedReports] = React.useState([]);
   const [optionItems, setOptionItems] = React.useState(null);
 
   useEffect(
@@ -135,7 +135,7 @@ function App() {
                 variant="outlined"
                 className="report-select"
                 value={
-                  (location.pathname === '/' || embeddedReports.length === 0) ? 
+                  (location.pathname === '/' || embeddedReports.length === 0) ?
                     "0"
                     : location.pathname.substr(1)
                 }
@@ -150,19 +150,19 @@ function App() {
           </div>
         </Toolbar>
       </AppBar>
-      <Switch>   
+      <Switch>
         {embeddedReports.map((report) => (
            <Route key={report.report_name_english} path={`/${report.report_name_english}`}>
-           {report.report_name_english === DEFAULT_REPORT_TYPE ? <Report
+           {DEFAULT_REPORT_TYPES.includes(report.report_name_english) ? <Report
                  path={`/${report.report_name_english}`}
                  schools={schoolsMetaData}
                  selectedId={selectedId}
                  setSelectedId={setSelectedId}
                /> : <EmbeddedReport report={report} />}
-         </Route>     
+         </Route>
         ))}
-      </Switch>         
-          
+      </Switch>
+
       <div className="vision-zero-container" id="visionZeroSection">
         <VisionZero />
       </div>
