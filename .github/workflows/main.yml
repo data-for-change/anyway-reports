@@ -49,5 +49,5 @@ jobs:
           git config --global user.name "Anyway CI" &&\
           git config --global user.email "anyway-ci@localhost" &&\
           git add apps/anyway/values-anyway-auto-updated.yaml && git commit -m "automatic update of anyway-report docker image" &&\
-          git push origin master
+          git push origin main
         fi          
