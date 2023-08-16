@@ -9,9 +9,9 @@ env:
 
 jobs:
   Build-anyway-reports:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Build and push anyway Docker image
       uses: docker/build-push-action@v1.1.1
       with:
@@ -27,9 +27,9 @@ jobs:
   deploy:
     needs:
       - Build-anyway-reports
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - env:
         DOCKER_REPOSITORY_ANYWAY_REPORTS: ${{ env.REGISTRY_URL }}/${{ env.DOCKER_REPOSITORY_ANYWAY_REPORTS }}
         DFC_K8S_DEPLOY_KEY: ${{ secrets.DFC_K8S_DEPLOY_KEY }}
