@@ -58,7 +58,7 @@ const getLineOptions = (stats) => {
     tooltip: { enabled: false },
     series,
     xAxis: {
-      categories: ["2018", "2011", "2020", "2021", "2022", "2023"],
+      categories: ["2018", "2019", "2020", "2021", "2022", "2023"],
     },
     yAxis: {
       title: "",
