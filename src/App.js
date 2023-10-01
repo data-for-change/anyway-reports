@@ -170,24 +170,24 @@ function App() {
         <Toolbar variant="dense">
           <div className="anyway-footer">
             <a
-              href="http://www.hasadna.org.il/"
-              title="לדעת להשפיע - מבית הסדנא לידע ציבורי"
+              href="http://www.anyway.co.il/"
+              title="נתון לשינוי"
             >
               <img
-                className="hasadna-logo"
-                src="images/hasadna.png"
-                alt="לוגו של הסדנה"
+                className="dfc-logo"
+                src="images/dfc.png"
+                alt="לוגו של נתון לשינוי"
               />
             </a>
             <a
-              className="hasadna-links"
-              href="https://www.jgive.com/new/he/ils/donation-targets/3268"
+              className="dfc-links"
+              href="https://www.paypal.com/paypalme/dataforchange"
               target="new"
             >
               תרמו לנו
             </a>
             <a
-              className="hasadna-links"
+              className="anyway-links"
               href="mailto:feedback@anyway.co.il?subject=ANYWAY%20Feedback"
               target="new"
             >
