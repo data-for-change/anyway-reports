@@ -32,7 +32,7 @@ jobs:
     - uses: actions/checkout@v3
     - env:
         DOCKER_REPOSITORY_ANYWAY_REPORTS: ${{ env.REGISTRY_URL }}/${{ env.DOCKER_REPOSITORY_ANYWAY_REPORTS }}
-        DFC_K8S_DEPLOY_KEY: ${{ secrets.DFC_K8S_DEPLOY_KEY }}
+        DFC_IAC_DEPLOY_KEY: ${{ secrets.DFC_IAC_DEPLOY_KEY }}
       run: |
         SHA_TAG=sha-`git rev-parse --short $GITHUB_SHA` &&\
         echo SHA_TAG=$SHA_TAG &&\
@@ -40,14 +40,14 @@ jobs:
         echo ANYWAY_REPORTS_IMAGE=$ANYWAY_REPORTS_IMAGE &&\
         if ! git log -1 --pretty=format:"%s" | grep -- --no-deploy; then
           cd `mktemp -d` &&\
-          echo "${DFC_K8S_DEPLOY_KEY}" > dfc_k8s_deploy_key &&\
+          echo "${DFC_IAC_DEPLOY_KEY}" > dfc_iac_deploy_key &&\
           chmod 400 dfc_k8s_deploy_key &&\
-          export GIT_SSH_COMMAND="ssh -i `pwd`/dfc_k8s_deploy_key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" &&\
-          git clone git@github.com:data-for-change/dfc-k8s.git &&\
-          cd dfc-k8s &&\
-          python update_yaml.py '{"anywayReportsImage":"'${ANYWAY_REPORTS_IMAGE}'"}' apps/anyway/values-anyway-auto-updated.yaml &&\
+          export GIT_SSH_COMMAND="ssh -i `pwd`/dfc_iac_deploy_key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" &&\
+          git clone git@github.com:data-for-change/dfc-iac.git &&\
+          cd dfc-iac &&\
+          bin/update_anyway_env.py '{"anywayReportsImage":"'${ANYWAY_REPORTS_IMAGE}'"}' &&\
           git config --global user.name "Anyway CI" &&\
           git config --global user.email "anyway-ci@localhost" &&\
-          git add apps/anyway/values-anyway-auto-updated.yaml && git commit -m "automatic update of anyway-report docker image" &&\
+          git add apps/anyway/.env && git commit -m "automatic update of anyway-report docker image" &&\
           git push origin main
-        fi          
+        fi
