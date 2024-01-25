@@ -41,7 +41,7 @@ jobs:
         if ! git log -1 --pretty=format:"%s" | grep -- --no-deploy; then
           cd `mktemp -d` &&\
           echo "${DFC_IAC_DEPLOY_KEY}" > dfc_iac_deploy_key &&\
-          chmod 400 dfc_k8s_deploy_key &&\
+          chmod 400 dfc_iac_deploy_key &&\
           export GIT_SSH_COMMAND="ssh -i `pwd`/dfc_iac_deploy_key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" &&\
           git clone git@github.com:data-for-change/dfc-iac.git &&\
           cd dfc-iac &&\
