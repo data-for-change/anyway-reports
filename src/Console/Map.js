@@ -8,7 +8,7 @@ function getLink(school, simpleView) {
     let long = school.longitude;
     let link = `https://www.anyway.co.il/?zoom=17&lat=${lat}&lon=${long}`;
     if (simpleView) {
-        link = `${link}&start_date=2019-06-01&end_date=2024-05-31&show_fatal=1&show_severe=1&show_light=1&approx=1&accurate=1&show_markers=1&show_discussions=&show_urban=3&show_intersection=3&show_lane=3&show_day=7&show_holiday=0&show_time=24&start_time=25&end_time=25&weather=0&road=0&separation=0&surface=0&acctype=0&controlmeasure=0&district=0&case_type=0&show_rsa=0&start_time=7&end_time=19&age_groups=234&hide_search=true&map_only=true&hide_search=true`;
+        link = `${link}&start_date=2019-06-01&end_date=2024-05-31&show_fatal=1&show_severe=1&show_light=1&approx=1&accurate=1&show_markers=1&show_discussions=&show_urban=3&show_intersection=3&show_lane=3&show_day=7&show_holiday=0&show_time=24&start_time=7&end_time=19&weather=0&road=0&separation=0&surface=0&acctype=0&controlmeasure=0&district=0&case_type=0&show_rsa=0&age_groups=234&hide_search=true&map_only=true&hide_search=true`;
     }
     return link;
 }
