@@ -176,7 +176,7 @@ function App() {
               <img
                 className="dfc-logo"
                 src="images/dfc.png"
-                alt="לוגו של נתון לשינוי"
+                alt="נתון לשינוי"
               />
             </a>
             <a
